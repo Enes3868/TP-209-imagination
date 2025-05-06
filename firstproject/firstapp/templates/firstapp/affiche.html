@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>ajout d'un Livre</title>
 </head>
 <body>
     <p> vous avez ajouté la pérsonnalité suivante {{Personnalite.nom}} {{Personnalite.id}} </p>
+    <a class="btn_generic" href="/app1/ROUTE_formulaire/"> Ajouter un enregistrement</a>
+    <main class="flex_conteneur_all">
+        {% for data in liste %}
+            <div class="flex_item_all">
+                <div class="traitement">
+                    {{data|safe}}
+                </div>
+                <div class="boutons_all">
+                </div>
+            </div>
+        {% endfor %}
+    </main>
 </body>
 </html>

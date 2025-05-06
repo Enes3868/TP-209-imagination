@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import render
 from .forms import PersonnaliteForm
 from . import models
+
 def ajout(request):
     if request.method == "POST":
         form = PersonnaliteForm(request)
@@ -35,4 +36,9 @@ def traitementupdate(request, id):
         return HttpResponseRedirect("/firstapp/")
     else:
         return render(request, "firstapp/update.html", {"form": lform, "id": id})
+
+
+def ACTION_afficher_all(request):
+    liste_data = list(models.Personnalite.objects.all())
+    return render(request, "firstapp/update.html", {"Personnalite": Personnalite})
 

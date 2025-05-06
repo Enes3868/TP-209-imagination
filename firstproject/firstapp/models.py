@@ -6,6 +6,8 @@ class Personnalite(models.Model):
 
         pays = models.CharField(blank=False)
 
+
         def __str__(self):
                 chaine = f"{self.nom}␣et␣{self.prenom}␣née␣en␣{self.date_parution}␣dans␣le␣pays␣suivant␣{self.pays}"
                 return chaine
+

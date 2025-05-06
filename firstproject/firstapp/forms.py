@@ -20,3 +20,4 @@ class PersonnaliteForm(ModelForm):
         'date_naissance': forms.TextInput(attrs={'class': 'class_css_input', 'placeholder': 'La date de naissance …'}),
         'pays': forms.TextInput(attrs={'class': 'class_css_area', 'placeholder': 'Le pays…'}),
         }
+

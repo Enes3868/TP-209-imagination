@@ -7,7 +7,13 @@
 </head>
 <body>
     <p> vous avez ajouté la pérsonnalité suivante {{Personnalite.nom}} {{Personnalite.id}} </p>
-    <a class="btn_generic" href="/app1/ROUTE_formulaire/"> Ajouter un enregistrement</a>
+    <ul>
+        <li><strong>Nom :</strong> {{ nom }}</li>
+        <li><strong>Prénom :</strong> {{ prenom }}</li>
+        <li><strong>Date de naissance :</strong> {{ date_naissance }}</li>
+    </ul>
+    <a href="{% url 'ajout' %}">
+        <button type="button">Retour à l'ajout</button>
     <main class="flex_conteneur_all">
         {% for data in liste %}
             <div class="flex_item_all">

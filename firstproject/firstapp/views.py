@@ -3,24 +3,31 @@ from django.shortcuts import render
 from django.shortcuts import render
 from .forms import PersonnaliteForm
 from . import models
+from .models import Personnalite
 
 def ajout(request):
-    if request.method == "POST":
-        form = PersonnaliteForm(request)
+     if request.method == "POST":
+        form = PersonnaliteForm(request.POST)  
         if form.is_valid():
-            Personnalite = form.save()
-            return render(request,"firstapp/affiche.html",{"Personnalite" : Personnalite})
+            personnalite = form.save()
+            return render(request, "firstapp/affiche.html", {"personnalite": personnalite})  
         else:
-            return render(request,"firstapp/ajout.html",{"form": form})
+            return render(request, "firstapp/ajout.html", {"form": form})  
+     else:
+        form = PersonnaliteForm()
+        return render(request, "firstapp/ajout.html", {"form": form}) 
 
 
 def traitement(request):
     lform = PersonnaliteForm(request.POST)
     if lform.is_valid():
         personnalite = lform.save()
-        return render(request,"firstapp/affiche.html",{"Personnalite" : personnalite})
-    else:
-        return render(request,"firstapp/ajout.html",{"form": lform})
+        return render(request, 'firstapp/affiche.html', {
+                "nom": personnalite.nom,
+                "prenom": personnalite.prenom,
+                "date_naissance": personnalite.date_naissance,
+            })
+    return redirect('ajout')
 
 
 def read(request, id):
@@ -38,7 +45,7 @@ def traitementupdate(request, id):
         return render(request, "firstapp/update.html", {"form": lform, "id": id})
 
 
-def ACTION_afficher_all(request):
-    liste_data = list(models.Personnalite.objects.all())
-    return render(request, "firstapp/update.html", {"Personnalite": Personnalite})
+def afficher_all(request):
+    liste_personnalites = Personnalite.objects.all()
+    return render(request, "firstapp/afficher_all.html", {"liste": liste_personnalites})
 

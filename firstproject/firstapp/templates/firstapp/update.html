@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier une personnalité</title>
+</head>
+<body>
+    <h1>Modifier la personnalité</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sauvegarder</button>
+    </form>
+    <a href="{% url 'afficher_all' %}">Retour</a>
+</body>
+</html>

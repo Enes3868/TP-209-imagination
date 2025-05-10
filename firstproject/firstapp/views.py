@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 from django.shortcuts import render
 from .forms import PersonnaliteForm
 from . import models
@@ -49,3 +50,14 @@ def afficher_all(request):
     liste_personnalites = Personnalite.objects.all()
     return render(request, "firstapp/afficher_all.html", {"liste": liste_personnalites})
 
+def update(request, id):
+    personnalite = get_object_or_404(models.Personnalite, id=id)
+    if request.method == "POST":
+        form = PersonnaliteForm(request.POST, instance=personnalite)
+        if form.is_valid():
+            form.save()
+            return redirect('afficher_all')
+    else:
+        form = PersonnaliteForm(instance=personnalite)
+    
+    return render(request, "firstapp/update.html", {"form": form})

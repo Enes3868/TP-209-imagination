@@ -19,10 +19,11 @@
                         <li><strong>Prénom:</strong> {{ personnalite.prenom }}</li>
                         <li><strong>Date de naissance:</strong> {{ personnalite.date_naissance }}</li>
                     </ul>
-                </div>
+                    <a href="{% url 'update' personnalite.id %}"><button>Modifier</button></a>
+
             </div>
         {% empty %}
-            <p>Aucune personnalité trouvée.</p> 
+            <p>Aucune personnalités trouvée.</p> 
         {% endfor %}
     </main>
 </body>

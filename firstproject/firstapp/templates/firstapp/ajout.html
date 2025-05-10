@@ -8,9 +8,11 @@
 <body>
     <form method="post" action="/firstapp/traitement/">
         {% csrf_token %}
-        {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
--->
+        {{ form.as_ul }} 
+
         <input type="submit" value="envoyer␣les␣données"\>
+        <br>
+        <a href="{% url 'afficher_all' %}">Afficher les données</a>
     </form>
 </body>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Page affichage ALL</title>
+</head>
+<body>
+    <h1>Liste des enregistrements des pays</h1>
+
+    <a class="btn_generic" href="{% url 'ajoutp' %}">Ajouter un enregistrement</a>
+
+    <main class="flex_conteneur_all">
+        {% for pays in liste %}
+            <div class="flex_item_all">
+                <div class="traitementp">
+                    <ul>
+                        <li><strong>Pays:</strong> {{ pays.pays }}</li>
+                        <li><strong>Description:</strong> {{ pays.description }}</li>
+                    </ul>
+                    <a href="{% url 'updatep' pays.id %}"><button>Modifier</button></a>
+                    <a href="{% url 'supprimerp' pays.id %}">Supprimer</a>
+
+            </div>
+        {% empty %}
+            <p>Aucune pays trouvée.</p>
+        {% endfor %}
+    </main>
+</body>
+</html>

@@ -21,3 +21,10 @@ class PersonnaliteForm(ModelForm):
         'pays': forms.TextInput(attrs={'class': 'class_css_area', 'placeholder': 'Le pays…'}),
         }
 
+class PaysForm(ModelForm):
+    class Meta:
+        model = models.Pays
+        fields = ('pays', 'description')
+        labels = {
+            'pays' : _('Le pays'),
+        }

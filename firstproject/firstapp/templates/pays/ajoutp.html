@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <p> Pérsonnalité historique:</p>
+    <p> Pays:</p>
 </head>
 <body>
-    <form method="post" action="/firstapp/traitement/">
+    <form method="post" action="/firstapp/traitementp/">
         {% csrf_token %}
-        {{ form.as_ul }} 
+        {{ form.as_ul }}
 
         <input type="submit" value="envoyer␣les␣données"\>
         <br>
-        <a href="{% url 'afficher_all' %}">Afficher les données</a>
+        <a href="{% url 'afficher_allp' %}">Afficher les données</a>
         <br>
-        <a href="{% url 'ajoutp' %}">Ajout Pays</a>
+        <a href="{% url 'ajout' %}">Ajout Personnalité</a>
 
     </form>
 </body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>ajout d'un Pays</title>
+</head>
+<body>
+    <p> fiche {{Pays.pays}} </p>
+    <ul>
+        <li><strong>Pays :</strong> {{ pays }}</li>
+        <li><strong>Description :</strong> {{ description }}</li>
+    </ul>
+    <a href="{% url 'ajoutp' %}">
+        <button type="button">Retour à l'ajout</button>
+    <main class="flex_conteneur_all">
+        {% for data in liste %}
+            <div class="flex_item_all">
+                <div class="traitementp">
+                    {{data|safe}}
+                </div>
+                <div class="boutons_all">
+                </div>
+            </div>
+        {% endfor %}
+    </main>
+</body>
+</html>

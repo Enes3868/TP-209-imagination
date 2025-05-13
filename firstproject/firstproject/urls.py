@@ -21,5 +21,5 @@ from django.shortcuts import redirect
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('firstapp/', include("firstapp.urls")),
-    path('',lambda request: redirect('/firstproject/')),
+    path('',lambda request: redirect('/firstapp/afficher_allp/')),
 ]

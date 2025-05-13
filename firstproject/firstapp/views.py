@@ -5,6 +5,8 @@ from django.shortcuts import render
 from .forms import PersonnaliteForm
 from . import models
 from .models import Personnalite
+from django.shortcuts import HttpResponseRedirect
+
 
 def ajout(request):
      if request.method == "POST":
@@ -20,15 +22,12 @@ def ajout(request):
 
 
 def traitement(request):
-    lform = PersonnaliteForm(request.POST)
-    if lform.is_valid():
-        personnalite = lform.save()
-        return render(request, 'firstapp/affiche.html', {
-                "nom": personnalite.nom,
-                "prenom": personnalite.prenom,
-                "date_naissance": personnalite.date_naissance,
-            })
-    return redirect('ajout')
+    personnalite = PersonnaliteForm(request.POST)
+    if personnalite.is_valid():
+        sauvegarde = personnalite.save()
+        return render(request, " firstapp/affiche.html ", {"donnees ": sauvegarde })
+    else:
+        return render(request, "firstapp/ajout.html", {"formulaire": personnalite})
 
 
 def read(request, id):
@@ -61,3 +60,8 @@ def update(request, id):
         form = PersonnaliteForm(instance=personnalite)
     
     return render(request, "firstapp/update.html", {"form": form})
+
+def supprimer(request, id):
+    personnalite = models.Personnalite.objects.get(pk=id)
+    personnalite.delete()
+    return HttpResponseRedirect("firstapp/afficher_all.html/")

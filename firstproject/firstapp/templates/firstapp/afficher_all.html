@@ -6,25 +6,30 @@
     <title>Page affichage ALL</title>
 </head>
 <body>
-    <h1>Liste des enregistrements dans la DB…</h1>
+    <h1>Liste des enregistrements des personnalités</h1>
 
     <a class="btn_generic" href="{% url 'ajout' %}">Ajouter un enregistrement</a>
 
     <main class="flex_conteneur_all">
-        {% for personnalite in liste %}
+        {% for pays in liste %}
             <div class="flex_item_all">
                 <div class="traitement">
                     <ul>
                         <li><strong>Nom:</strong> {{ personnalite.nom }}</li>
                         <li><strong>Prénom:</strong> {{ personnalite.prenom }}</li>
-                        <li><strong>Date de naissance:</strong> {{ personnalite.date_naissance }}</li>
+                        <li><strong>Pays:</strong> {{ personnalite.pays }}</li>
+
                     </ul>
-                    <a href="{% url 'update' personnalite.id %}"><button>Modifier</button></a>
+                    <a href="{% url 'update' pays.id %}"><button>Modifier</button></a>
+                    <a href="{% url 'supprimer' pays.id %}">Supprimer</a>
 
             </div>
         {% empty %}
-            <p>Aucune personnalités trouvée.</p> 
+            <p>Aucune personnalité trouvée.</p>
         {% endfor %}
     </main>
+</body>
+</html>
+
 </body>
 </html>

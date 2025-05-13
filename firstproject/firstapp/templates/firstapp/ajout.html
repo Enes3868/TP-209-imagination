@@ -6,15 +6,17 @@
     <p> Pérsonnalité historique:</p>
 </head>
 <body>
-    <form method="post" action="/firstapp/traitement/">
-        {% csrf_token %}
-        {{ form.as_ul }} 
+    <form method="post" action="{% url 'traitement' %}">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Envoyer les données">
+    </form>
 
-        <input type="submit" value="envoyer␣les␣données"\>
+    <div class="links">
+        <a href="{% url 'afficher_all' %}">Voir toutes les entrées</a>
         <br>
-        <a href="{% url 'afficher_all' %}">Afficher les données</a>
-        <br>
-        <a href="{% url 'ajoutp' %}">Ajout Pays</a>
+        <a href="{% url 'ajoutp' %}">Ajouter un pays</a>
+    </div>
 
     </form>
 </body>

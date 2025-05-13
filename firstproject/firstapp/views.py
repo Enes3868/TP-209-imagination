@@ -9,30 +9,33 @@ from django.shortcuts import HttpResponseRedirect
 
 
 def ajout(request):
-     if request.method == "POST":
-        form = PersonnaliteForm(request.POST)  
+    if request.method == "POST":
+        form = PersonnaliteForm(request.POST)
         if form.is_valid():
             personnalite = form.save()
-            return render(request, "firstapp/affiche.html", {"personnalite": personnalite})  
+            return redirect('confirmation', id=personnalite.id)  # Redirection vers la confirmation
         else:
-            return render(request, "firstapp/ajout.html", {"form": form})  
-     else:
+            return render(request, "firstapp/ajout.html", {"form": form})
+    else:
         form = PersonnaliteForm()
-        return render(request, "firstapp/ajout.html", {"form": form}) 
-
+        return render(request, "firstapp/ajout.html", {"form": form})
 
 def traitement(request):
-    personnalite = PersonnaliteForm(request.POST)
-    if personnalite.is_valid():
-        sauvegarde = personnalite.save()
-        return render(request, " firstapp/affiche.html ", {"donnees ": sauvegarde })
-    else:
-        return render(request, "firstapp/ajout.html", {"formulaire": personnalite})
+    if request.method == "POST":
+        form = PersonnaliteForm(request.POST)
+        if form.is_valid():
+            personnalite = form.save()
+            return render(request, "firstapp/affiche.html", {
+                "personnalite": personnalite,
+                "message": "La personnalité a bien été enregistrée !"
+            })
+        else:
+            return render(request, "firstapp/ajout.html", {"form": form})
+    return redirect('ajout')  # Redirige si accès direct sans POST
 
-
-def read(request, id):
-    Personnalite = models.Personnalite.objects.get(pk=id)
-    return render(request,"firstapp/affiche.html",{"Personnalite": Personnalite})
+def confirmation(request, id):
+    personnalite = models.Personnalite.objects.get(pk=id)
+    return render(request, "firstapp/affiche.html", {"personnalite": personnalite})
 
 def traitementupdate(request, id):
     lform = PersonnaliteForm(request.POST)

@@ -3,13 +3,25 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <title>Page affichage données</title>
+    <title>Confirmation</title>
 </head>
 <body>
-    <h1>Contenu d’un enregistrement :</h1>
-    <div class="traitement">
-        {{donnees|safe}}
+    <h1>{{ message|default:"Confirmation d'enregistrement" }}</h1>
+    
+    <div class="confirmation-details">
+        <h2>Détails enregistrés :</h2>
+        <ul>
+            <li><strong>Nom :</strong> {{ personnalite.nom }}</li>
+            <li><strong>Prénom :</strong> {{ personnalite.prenom }}</li>
+            <li><strong>date de naissance :</strong> {{ personnalite.date_naissance }}</li>
+            <li><strong>Pays :</strong> {{ personnalite.pays }}</li>
+        </ul>
     </div>
-    <a class="btn_generic" href="/firsapp/afficher_all/">Retour à la page principale…</a>
+
+    <div class="actions">
+        <a href="{% url 'ajout' %}" class="btn">Ajouter autre</a>
+        <br>
+        <a href="{% url 'afficher_all' %}" class="btn">Voir toutes les enregistrements</a>
+    </div>
 </body>
 </html>

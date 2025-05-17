@@ -26,12 +26,12 @@ class PaysForm(ModelForm):
 class PersonnaliteForm(ModelForm):
     class Meta:
         model = models.Personnalite
-        fields = ['nom', 'prenom', 'date_naissance', 'pays_saisie']
+        fields = ['nom', 'prenom', 'date_naissance', 'pays']
         labels = {
             'nom': _('Nom'),
             'prenom': _('Prénom'),
             'date_naissance': _('Date de naissance'),
-            'pays_saisie': _('Pays')
+            'pays': _('Catégorie Pays')
         }
         widgets = {
             'nom': forms.TextInput(attrs={
@@ -46,8 +46,5 @@ class PersonnaliteForm(ModelForm):
                 'class': 'form-control',
                 'type': 'date'
             }),
-            'pays_saisie': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Entrez le pays...'
-            }),
+        
         }

@@ -18,14 +18,9 @@ class Personnalite(models.Model):
     nom = models.CharField(max_length=100, verbose_name="Nom")
     prenom = models.CharField(max_length=100, verbose_name="Prénom")
     date_naissance = models.DateField(blank=True, null=True, verbose_name="Date de naissance")
-    pays_saisie = models.CharField(max_length=100, verbose_name="Pays")
-    pays_reference = models.ForeignKey(
-        Pays, 
-        on_delete=models.SET_NULL, 
-        null=True, 
-        blank=True,
-        verbose_name="Pays (référence)"
-    )
+    pays = models.ForeignKey("firstapp.Pays", on_delete=models.CASCADE, default=None) 
 
     def __str__(self):
-        return f"{self.nom} {self.prenom} - {self.pays_saisie}"
+        return f"{self.nom} {self.prenom} - {self.pays}"
+    
+    

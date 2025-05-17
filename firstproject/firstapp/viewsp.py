@@ -26,8 +26,7 @@ def traitementp(request):
     if lform.is_valid():
         pays = lform.save()
         return render(request, 'pays/affichep.html', {
-            pays: pays.pays,
-            "description": pays.description,
+            "pays": pays  
         })
     return redirect('ajoutp')
 
@@ -67,6 +66,6 @@ def updatep(request, id):
 
 
 def supprimerp(request, id):
-    pays = models.Pays.objects.get(pk=id)
+    pays = get_object_or_404(models.Pays, pk=id)
     pays.delete()
-    return HttpResponseRedirect("pays/afficher_allp.html/")
+    return redirect("afficher_all")

@@ -65,6 +65,6 @@ def update(request, id):
     return render(request, "firstapp/update.html", {"form": form})
 
 def supprimer(request, id):
-    personnalite = models.Personnalite.objects.get(pk=id)
+    personnalite = get_object_or_404(models.Personnalite, pk=id)
     personnalite.delete()
-    return HttpResponseRedirect("firstapp/afficher_all.html/")
+    return redirect("afficher_all")

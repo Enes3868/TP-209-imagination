@@ -17,6 +17,7 @@
                     <ul>
                         <li><strong>Nom:</strong> {{ personnalite.nom }}</li>
                         <li><strong>Prénom:</strong> {{ personnalite.prenom }}</li>
+                        <li><strong>Date de naissance:</strong> {{ personnalite.date_naissance }}</li>
                         <li><strong>Pays:</strong> {{ personnalite.pays.pays }}</li>
                     </ul>
                     <a href="{% url 'update' personnalite.id %}"><button>Modifier</button></a>

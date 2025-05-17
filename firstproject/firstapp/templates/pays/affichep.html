@@ -3,26 +3,24 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <title>ajout d'un Pays</title>
+    <title>Confirmation d'enregistrement</title>
 </head>
 <body>
-    <p> fiche {{Pays.pays}} </p>
-    <ul>
-        <li><strong>Pays :</strong> {{ pays }}</li>
-        <li><strong>Description :</strong> {{ description }}</li>
-    </ul>
-    <a href="{% url 'ajoutp' %}">
-        <button type="button">Retour à l'ajout</button>
-    <main class="flex_conteneur_all">
-        {% for data in liste %}
-            <div class="flex_item_all">
-                <div class="traitementp">
-                    {{data|safe}}
-                </div>
-                <div class="boutons_all">
-                </div>
-            </div>
-        {% endfor %}
-    </main>
+    <h1>Pays enregistré avec succès</h1>
+    
+    <div class="fiche-pays">
+        <p><strong>Pays :</strong> {{ pays.pays }}</p>
+        <p><strong>Description :</strong> {{ pays.description }}</p>
+    </div>
+
+    <div class="actions">
+        <a href="{% url 'ajoutp' %}">
+            <button type="button">Ajouter un autre pays</button>
+        </a>
+        <br>
+        <a href="{% url 'afficher_allp' %}">  
+            <button type="button">Voir tous les pays</button>
+        </a>
+    </div>
 </body>
 </html>

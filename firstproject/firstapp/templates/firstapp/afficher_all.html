@@ -11,25 +11,21 @@
     <a class="btn_generic" href="{% url 'ajout' %}">Ajouter un enregistrement</a>
 
     <main class="flex_conteneur_all">
-        {% for pays in liste %}
+        {% for personnalite in liste %}
             <div class="flex_item_all">
                 <div class="traitement">
                     <ul>
                         <li><strong>Nom:</strong> {{ personnalite.nom }}</li>
                         <li><strong>Prénom:</strong> {{ personnalite.prenom }}</li>
-                        <li><strong>Pays:</strong> {{ personnalite.pays }}</li>
-
+                        <li><strong>Pays:</strong> {{ personnalite.pays.pays }}</li>
                     </ul>
-                    <a href="{% url 'update' pays.id %}"><button>Modifier</button></a>
-                    <a href="{% url 'supprimer' pays.id %}">Supprimer</a>
-
+                    <a href="{% url 'update' personnalite.id %}"><button>Modifier</button></a>
+                    <a href="{% url 'supprimer' personnalite.id %}">Supprimer</a>
+                </div>
             </div>
         {% empty %}
             <p>Aucune personnalité trouvée.</p>
         {% endfor %}
     </main>
-</body>
-</html>
-
 </body>
 </html>

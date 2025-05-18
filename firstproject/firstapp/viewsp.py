@@ -68,4 +68,4 @@ def updatep(request, id):
 def supprimerp(request, id):
     pays = get_object_or_404(models.Pays, pk=id)
     pays.delete()
-    return redirect("afficher_all")
+    return redirect("afficher_allp")
